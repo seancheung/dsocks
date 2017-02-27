@@ -1,0 +1,13 @@
+version: '2'
+services:
+ dsocks:
+  build: 
+   context: ./
+  image: "seancheung/dsocks:alpine"
+  ports: 
+   - "8388:8388"
+  expose: 
+   - "1080"
+  volumes: 
+   - ./conf:/etc/shadowsocks
+   
