@@ -1,5 +1,5 @@
 # DSOCKS
-Docker hosted alpine based shadowsocks server. It is only 27MB(compressed).
+Docker hosted alpine based shadowsocks server. It is only 27MB(compressed) in size.
 
 ## Configuration
 Edit **conf/config.json**
@@ -40,25 +40,4 @@ docker run --restart=always -d -p 8388:8388 --name dsocks seancheung/dsocks:late
 docker stop dsocks
 docker start dsocks
 docker restart dsocks
-```
-
-## Linode StackScript, Vultr Startup Script(Boot)
-```shellscript
-#!/bin/bash
-
-# envs
-PORT=8388
-PWD=123456
-ENC=aes-256-cfb
-
-# get docker
-curl -fsSL get.docker.com -o get-docker.sh
-sh get-docker.sh
-
-# pull and run
-if [ ! $(which docker) ]; then
-  echo 'missing docker'
-  exit 1
-fi
-docker run --restart=always -d -p $PORT:$PORT seancheung/dsocks:latest -p $PORT -k $PWD -m $ENC start
 ```
